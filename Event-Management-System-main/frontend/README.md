@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+Event-Management-System
+This project is an Event Management System, consisting of a Spring Boot backend and a React frontend. The backend handles API requests, while the frontend provides a user interface to manage events and attendees.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Prerequisites
 
-## Available Scripts
+Java 17 or higher
+Node.js 14 or higher
+npm (comes with Node.js)
+MySQL database
+Maven (for building the Spring Boot project)
 
-In the project directory, you can run:
 
-### `npm start`
+Backend Setup (Spring Boot)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Clone the Repository
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+git clone https://github.com/your-username/event-management-system.git
+cd event-management-system
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+2. Configure the Database
+Update the application.properties file located in src/main/resources with your database configuration:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+spring.datasource.url=jdbc:mysql://localhost:3306/your_database_name
+spring.datasource.username=your_database_username
+spring.datasource.password=your_database_password
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+3. Build and Run the Backend
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+./mvnw clean install
+./mvnw spring-boot:run
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The backend should now be running on http://localhost:8080.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Frontend Setup (React)
 
-## Learn More
+1. Navigate to the Frontend Directory
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+cd frontend
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Install Dependencies
 
-### Analyzing the Bundle Size
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. Start the Frontend
 
-### Advanced Configuration
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+The frontend should now be running on http://localhost:3000.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+API Endpoints
+The backend provides the following API endpoints:
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+GET /api/events: Fetch all events
+
+POST /api/events: Add a new event
+
+PUT /api/events/{id}: Update an event by its ID
+
+DELETE /api/events/{id}: Delete an event by its ID
+
+POST /api/events/{eventId}/attendees: Register an attendee to an event
+
+
+Running the Application
+
+Start the backend by running the Spring Boot application.
+Start the frontend by running the React application.
+Open your browser and navigate to http://localhost:3000 to interact with the Event Management System.
+
+
+Notes
+
+Ensure your database server is running before starting the backend.
+You can modify the database configuration in the application.properties file to suit your setup.
+The frontend uses Axios to make API requests to the backend.
